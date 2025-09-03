@@ -124,6 +124,9 @@ unzip tandt_db.zip
 
 ## 5) Training
 
+### 5.0 Training dashboard setup
+conda install -y -c conda-forge tensorboard
+
 ### 5.1 Train **without depth**
 ```bash
 cd ~/gaussian-splatting
@@ -159,10 +162,21 @@ python Depth-Anything-V2/run.py \
 ```bash
 python utils/make_depth_scale.py --base_dir datasets/tandt/train/ --depths_dir datasets/tandt/train/depth-images
 
+#without tensorboard
 python train.py \
   -s datasets/tandt/train/ \
   -d depth-images/ \
   -m datasets/tandt/train/training-with-depth
+
+#with tensorboard
+python train.py \
+    -s datasets/tandt/train/ -d depth-images \
+    -m datasets/tandt/train/weak_supervision \
+    --test_iterations 500 1000 2000 3000 5000 7000 10000 15000 20000 30000
+
+#Monitor weak supervision
+python monitor_training.py datasets/tandt/train/weak_supervision
+
 ```
 
 ### 5.3 Train **with strong depth supervision** (Metric Depth)
@@ -195,6 +209,17 @@ python train.py \
   --depth_loss huber \
   --depth_warmup 2000 \
   --depth_grad_weight 0.1
+
+#with tensorboard
+python train.py \                              
+    -s datasets/tandt/train/ \
+    --depth_dir datasets/tandt/train/strong_gt_depth \
+    --depth_weight 2.5 --depth_loss huber \
+    -m datasets/tandt/train/strong_supervision \
+    --test_iterations 500 1000 2000 3000 5000 7000 10000 15000 20000 30000
+
+#Monitor strong supervision
+python monitor_training.py datasets/tandt/train/strong_supervision
 ```
 
 ---
