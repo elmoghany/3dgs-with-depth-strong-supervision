@@ -2,13 +2,17 @@
 
 Original repo cloned from https://github.com/graphdeco-inria/gaussian-splatting and then modified.
 
-This guide walks you from a fresh Linux box to:
+This guide walks you from a fresh Linux box to performance metrics:
+- Performance & loss metrics
 - Installing Miniconda + CUDA/PyTorch
 - Building Gaussian Splatting submodules
 - Training **without depth**, **with depth regularization**, and **with strong depth supervision**
 - Building and launching **SIBR viewers** on a headless server with **Xvfb + noVNC + Cloudflare Tunnel**
 
 ---
+## Loss
+
+!('img do not exist')[assets/training_comparison.png]
 
 ## 0) Quick Start (Dev Tunnel)
 
