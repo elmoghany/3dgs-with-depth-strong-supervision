@@ -185,6 +185,21 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
                 # Linear warmup for stability
                 warmup = min(1.0, float(iteration) / max(1, opt.depth_warmup))
                 L_depth_weighted = warmup * opt.depth_weight * L_depth
+                
+                # Adaptive scaling: Keep depth loss proportional to RGB loss
+                rgb_loss_magnitude = Ll1.item()
+                target_depth_ratio = 0.2  # Depth loss should be ~20% of RGB loss
+                if L_depth_weighted.item() > target_depth_ratio * rgb_loss_magnitude and iteration > 100:
+                    # Scale down depth loss to maintain balance
+                    scale_factor = (target_depth_ratio * rgb_loss_magnitude) / L_depth_weighted.item()
+                    L_depth_weighted = L_depth_weighted * scale_factor
+                    if iteration % 1000 == 0:
+                        print(f"[INFO] Adaptive scaling depth loss by {scale_factor:.3f} to maintain balance")
+                
+                # Debug: Print depth loss values periodically
+                if iteration <= 100 or iteration % 1000 == 0:
+                    print(f"[DEBUG] Iter {iteration}: RGB_loss={rgb_loss_magnitude:.4f}, depth_loss_raw={L_depth:.4f}, depth_loss_weighted={L_depth_weighted:.4f}, warmup={warmup:.3f}")
+                
                 loss += L_depth_weighted
                 Ll1depth = L_depth_weighted.item()  # for logging compatibility
             else:

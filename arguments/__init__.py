@@ -103,11 +103,11 @@ class OptimizationParams(ParamGroup):
         self.depth_l1_weight_final = 0.01
         self.random_background = False
         self.optimizer_type = "default"
-        # GT depth supervision training parameters
-        self.depth_weight = 3.5          # Stronger: depth has more influence
+        # GT depth supervision training parameters (conservative for stability)
+        self.depth_weight = 0.5          # Conservative: avoid destabilization
         self.depth_loss = "huber"
-        self.depth_grad_weight = 0.2     # Moderate edge sharpening boost
-        self.depth_warmup = 1500         # Slightly shorter warmup
+        self.depth_grad_weight = 0.01    # Very light edge sharpening
+        self.depth_warmup = 5000         # Longer warmup for stability
         super().__init__(parser, "Optimization Parameters")
 
 def get_combined_args(parser : ArgumentParser):
