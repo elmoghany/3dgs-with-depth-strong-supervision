@@ -19,6 +19,8 @@ This guide walks you from a fresh Linux box to performance metrics:
 | Validation PSNR    | 24.52  | 25.29  | ✅ 3% better             |
 | Gaussian Points    | 1.4M   | 1.1M   | ✅ 22% fewer             |
 | Total Loss         | 0.088  | 0.263  | — (includes depth)       |
+
+
 !['img do not exist'](assets/training_comparison.png)
 
 ### Equations
