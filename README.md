@@ -10,7 +10,7 @@ This guide walks you from a fresh Linux box to performance metrics:
 - Building and launching **SIBR viewers** on a headless server with **Xvfb + noVNC + Cloudflare Tunnel**
 
 ---
-## Loss
+## Loss & Performance
   Improvements (Strong supervision better):
   - ✅ L1 Loss: -45.92% improvement (0.041 vs 0.077)
   - ✅ Validation L1: -17.69% improvement
