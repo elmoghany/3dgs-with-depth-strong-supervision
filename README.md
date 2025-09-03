@@ -12,20 +12,13 @@ This guide walks you from a fresh Linux box to performance metrics:
 ---
 ## Loss & Performance
   Improvements (Strong supervision better):
-  Metric                 | Weak
-   | Strong  | Better?
-  -----------------------|--------
-  -|---------|--------
-  RGB L1 Loss           | 0.0767
-  | 0.0415  | ✅ 46% better
-  Validation L1         | 0.0404
-  | 0.0333  | ✅ 18% better
-  Validation PSNR       | 24.52
-  | 25.29   | ✅ 3% better
-  Gaussian Points       | 1.4M
-  | 1.1M    | ✅ 22% fewer
-  Total Loss            | 0.088
-  | 0.263   |  (includes depth)
+| Metric             |   Weak |  Strong | Better?                   |
+|--------------------|------:|-------:|---------------------------|
+| RGB L1 Loss        | 0.0767 | 0.0415 | ✅ 46% better            |
+| Validation L1      | 0.0404 | 0.0333 | ✅ 18% better            |
+| Validation PSNR    | 24.52  | 25.29  | ✅ 3% better             |
+| Gaussian Points    | 1.4M   | 1.1M   | ✅ 22% fewer             |
+| Total Loss         | 0.088  | 0.263  | — (includes depth)       |
 !['img do not exist'](assets/training_comparison.png)
 
 ### Equations
