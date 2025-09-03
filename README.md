@@ -8,8 +8,6 @@ This guide walks you from a fresh Linux box to:
 - Training **without depth**, **with depth regularization**, and **with strong depth supervision**
 - Building and launching **SIBR viewers** on a headless server with **Xvfb + noVNC + Cloudflare Tunnel**
 
-> Designed to be **copy‑paste friendly**, with clear categories and sub‑sections.
-
 ---
 
 ## 0) Quick Start (Dev Tunnel)
@@ -433,8 +431,5 @@ pkill -9 Xvfb
 
 ## Notes & Tips
 
-- **Depth Regularization vs Strong Supervision**: Regularization uses per-image scales/offsets and encourages consistency; **strong supervision** uses metric depth (e.g., 16‑bit PNG in meters) with explicit loss terms and weights.
-- If you run into **pkg-config** discovery issues, re-check `PKG_CONFIG_PATH` and `PKG_CONFIG_LIBDIR` exports.
-- Ensure the **CUDA version** in your environment matches the PyTorch wheel you install.
-- On headless servers, **Xvfb** is required to render SIBR apps; GPU GL features depend on your driver/NVIDIA container runtime configuration.
-
+- **Depth Regularization vs Strong Supervision**: Regularization uses per-image scales/offsets and encourages consistency
+- **strong supervision** uses metric depth (e.g., 16‑bit PNG in meters) with explicit loss terms and weights
