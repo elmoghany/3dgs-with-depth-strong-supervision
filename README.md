@@ -222,17 +222,6 @@ python Depth-Anything-V2/metric_depth/run.py \
 
 #### 5.3.3 Train with strong supervision flags
 ```bash
-python train.py \
-  -s datasets/tandt/train/ \
-  -m datasets/tandt/train/training-with-strong-gt-depth \
-  --depth_dir datasets/tandt/train/strong_gt_depth \
-  --depth_format png16 \
-  --depth_units meters \
-  --depth_weight 2.5 \
-  --depth_loss huber \
-  --depth_warmup 2000 \
-  --depth_grad_weight 0.1
-
 #with tensorboard
 python train.py -s datasets/tandt/train/ \
     --depth_dir datasets/tandt/train/strong_gt_depth \
