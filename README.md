@@ -1,6 +1,6 @@
 # Gaussian Splatting: Setup, Training (No-Depth / Depth / Strong-Depth), and SIBR Viewer (Headless + VNC)
 
-Original repo cloned from https://github.com/graphdeco-inria/gaussian-splatting and then modified.
+Original repo cloned from https://github.com/graphdeco-inria/gaussian-splatting and then modified HEAVILY!
 
 This guide walks you from a fresh Linux box to performance metrics:
 - Performance & loss metrics
