@@ -18,6 +18,21 @@ This guide walks you from a fresh Linux box to performance metrics:
   - ✅ Gaussian Count: -22% fewer Gaussians (more efficient!)
 !['img do not exist'](assets/training_comparison.png)
 
+### Equations
+Improved version loss:
+  - Complete Loss Function
+    L_total = L_RGB + f_warmup(t) * w_depth * L_depth
+
+  - RGB Loss Component
+    L_RGB = (1 - lambda_dssim) * L_L1 + lambda_dssim * (1 - SSIM)
+  
+  - Depth Loss Component
+    L_depth = L_huber + w_grad * L_grad
+    L_huber = mean_over_mask_M(Huber_delta(D - D_gt))
+
+  Warmup Function
+  f_warmup(t) = min(1, t / t_warmup)
+
 
 ---
 ## 0) Quick Start (Dev Tunnel)
@@ -221,11 +236,12 @@ python train.py \
 #with tensorboard
 python train.py -s datasets/tandt/train/ \
     --depth_dir datasets/tandt/train/strong_gt_depth \
-    --depth_weight 2 \
+    --depth_weight 0.02 \
     --depth_loss huber \
     --depth_format png16 \
     --depth_units meters \
-    --depth_grad_weight 0.1 \
+    --depth_grad_weight 0.0 \
+    --depth_warmup 15000 \
     -m datasets/tandt/train/strong_supervision \
     --test_iterations 500 1000 2000 3000 5000 7000 10000 15000 20000 30000
 
