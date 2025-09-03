@@ -136,7 +136,7 @@ def readColmapCameras(cam_extrinsics, cam_intrinsics, depths_params, images_fold
         # Load GT depth if depth_dir is provided
         gt_depth = None
         depth_mask = None
-        if gt_depth_args is not None and gt_depth_args.depth_dir:
+        if gt_depth_args is not None and hasattr(gt_depth_args, 'depth_dir') and gt_depth_args.depth_dir and gt_depth_args.depth_dir.strip():
             base_name = extr.name[:-n_remove]  # remove extension
             # resolve extension by format
             ext_map = {"png16": ".png", "exr": ".exr", "npy": ".npy"}
