@@ -11,8 +11,13 @@ This guide walks you from a fresh Linux box to performance metrics:
 
 ---
 ## Loss
-
+  Improvements (Strong supervision better):
+  ✅ L1 Loss: -45.92% improvement (0.041 vs 0.077)
+  ✅ Validation L1: -17.69% improvement
+  ✅ Validation PSNR: +3.16% improvement (25.29 vs 24.52 dB)
+  ✅ Gaussian Count: -22% fewer Gaussians (more efficient!)
 !['img do not exist'](assets/training_comparison.png)
+
 
 ## 0) Quick Start (Dev Tunnel)
 
