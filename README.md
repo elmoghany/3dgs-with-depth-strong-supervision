@@ -213,11 +213,11 @@ python train.py \
 #with tensorboard
 python train.py -s datasets/tandt/train/ \
     --depth_dir datasets/tandt/train/strong_gt_depth \
-    --depth_weight 2.5 \
+    --depth_weight 2 \
     --depth_loss huber \
     --depth_format png16 \
     --depth_units meters \
-    --depth_grad_weight 0.2 \
+    --depth_grad_weight 0.1 \
     -m datasets/tandt/train/strong_supervision \
     --test_iterations 500 1000 2000 3000 5000 7000 10000 15000 20000 30000
 
