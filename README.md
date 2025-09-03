@@ -223,6 +223,14 @@ python train.py -s datasets/tandt/train/ \
 python monitor_training.py datasets/tandt/train/strong_supervision
 ```
 
+### 5.4 Results - Training comparison
+```
+python compare_training.py \
+  --weak datasets/tandt/train/weak_supervision \
+  --strong datasets/tandt/train/strong_supervision \
+  --output final_comparison
+```
+
 ---
 
 ## 6) SIBR Interactive Viewers (Headless)
