@@ -19,6 +19,7 @@ This guide walks you from a fresh Linux box to performance metrics:
 !['img do not exist'](assets/training_comparison.png)
 
 
+---
 ## 0) Quick Start (Dev Tunnel)
 
 If you’re using VS Code’s dev tunnel (or similar), you can start a simple code tunnel first:
