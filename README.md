@@ -30,8 +30,8 @@ Improved version loss:
     L_depth = L_huber + w_grad * L_grad
     L_huber = mean_over_mask_M(Huber_delta(D - D_gt))
 
-  Warmup Function
-  f_warmup(t) = min(1, t / t_warmup)
+  - Warmup Function
+    f_warmup(t) = min(1, t / t_warmup)
 
 
 ---
