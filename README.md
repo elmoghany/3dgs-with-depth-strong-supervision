@@ -12,7 +12,7 @@ This guide walks you from a fresh Linux box to performance metrics:
 ---
 ## Loss
 
-!('img do not exist')[assets/training_comparison.png]
+!['img do not exist'](assets/training_comparison.png)
 
 ## 0) Quick Start (Dev Tunnel)
 
