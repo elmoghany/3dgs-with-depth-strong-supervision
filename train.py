@@ -127,10 +127,27 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
 
         # GT depth supervision (strict, no priors)
         L_depth = 0.0
-        if opt.depth_dir and viewpoint_cam.gt_depth is not None:
-            D_pred = render_pkg["depth"]                          # [H,W] rendered depth
+        if dataset.depth_dir and viewpoint_cam.gt_depth is not None:
+            D_pred = render_pkg["depth"]                          # rendered depth
             D_gt = viewpoint_cam.gt_depth.cuda()                  # [H,W] GT depth
             M = viewpoint_cam.gt_depth_mask.cuda()                # [H,W] validity mask
+            
+            # Debug: print tensor shapes only on first iteration
+            if iteration == 1:
+                print(f"[DEBUG] D_pred shape: {D_pred.shape}, D_gt shape: {D_gt.shape}, M shape: {M.shape}")
+            
+            # Handle different depth tensor formats
+            if D_pred.dim() == 3:
+                # If depth has 3 dimensions, take the first channel or squeeze
+                if D_pred.shape[0] == 1:
+                    D_pred = D_pred.squeeze(0)  # Remove batch dimension
+                else:
+                    D_pred = D_pred[0]  # Take first channel
+            elif D_pred.dim() == 4:
+                D_pred = D_pred.squeeze(0).squeeze(0)  # Remove batch and channel dims
+            
+            if iteration == 1:
+                print(f"[DEBUG] After processing D_pred shape: {D_pred.shape}")
             
             # Optional visibility gating: supervise only where something is rendered (depth > 0)
             if D_pred is not None:

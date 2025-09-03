@@ -56,6 +56,12 @@ class ModelParams(ParamGroup):
         self.train_test_exp = False
         self.data_device = "cuda"
         self.eval = False
+        # GT depth parameters (moved from OptimizationParams)
+        self.depth_dir = ""
+        self.depth_format = "png16"
+        self.depth_units = "meters"
+        self.depth_valid_min = 1e-4
+        self.depth_valid_max = 80.0
         super().__init__(parser, "Loading Parameters", sentinel)
 
     def extract(self, args):
@@ -97,16 +103,11 @@ class OptimizationParams(ParamGroup):
         self.depth_l1_weight_final = 0.01
         self.random_background = False
         self.optimizer_type = "default"
-        # GT depth supervision parameters (stronger, no priors)
-        self.depth_dir = ""
-        self.depth_format = "png16"
-        self.depth_units = "meters"
+        # GT depth supervision training parameters
         self.depth_weight = 3.5          # Stronger: depth has more influence
         self.depth_loss = "huber"
         self.depth_grad_weight = 0.2     # Moderate edge sharpening boost
         self.depth_warmup = 1500         # Slightly shorter warmup
-        self.depth_valid_min = 1e-4
-        self.depth_valid_max = 80.0
         super().__init__(parser, "Optimization Parameters")
 
 def get_combined_args(parser : ArgumentParser):

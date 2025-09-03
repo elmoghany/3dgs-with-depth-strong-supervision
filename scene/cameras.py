@@ -82,10 +82,17 @@ class Camera(nn.Module):
         self.gt_depth = None
         self.gt_depth_mask = None
         if gt_depth is not None:
+            # Ensure gt_depth is 2D (remove any extra dimensions)
+            if gt_depth.ndim > 2:
+                gt_depth = gt_depth[..., 0]  # Take first channel if multichannel
+            if gt_depth_mask.ndim > 2:
+                gt_depth_mask = gt_depth_mask[..., 0]  # Take first channel if multichannel
+            
             # Resize GT depth to match training resolution
             if (gt_depth.shape[0] != resolution[1]) or (gt_depth.shape[1] != resolution[0]):
                 gt_depth = cv2.resize(gt_depth, resolution, interpolation=cv2.INTER_NEAREST)
                 gt_depth_mask = cv2.resize(gt_depth_mask.astype(np.uint8), resolution, interpolation=cv2.INTER_NEAREST).astype(np.bool_)
+            
             self.gt_depth = torch.from_numpy(gt_depth).float().to(self.data_device)
             self.gt_depth_mask = torch.from_numpy(gt_depth_mask).bool().to(self.data_device)
 

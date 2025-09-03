@@ -55,8 +55,8 @@ def plot_comparison(weak_data, strong_data, output_dir):
     key_metrics = [
         ('train_loss_patches/total_loss', 'Total Training Loss', 'Loss'),
         ('train_loss_patches/l1_loss', 'L1 Training Loss', 'L1 Loss'),
-        ('test/loss_viewpoint - l1_loss', 'Test L1 Loss', 'L1 Loss'),
-        ('test/loss_viewpoint - psnr', 'Test PSNR', 'PSNR (dB)'),
+        ('train/loss_viewpoint - l1_loss', 'Validation L1 Loss', 'L1 Loss'),
+        ('train/loss_viewpoint - psnr', 'Validation PSNR', 'PSNR (dB)'),
         ('total_points', 'Total Gaussians', 'Count'),
     ]
     
@@ -108,8 +108,8 @@ def compute_statistics(weak_data, strong_data, output_dir):
     metrics_to_analyze = [
         'train_loss_patches/total_loss',
         'train_loss_patches/l1_loss', 
-        'test/loss_viewpoint - l1_loss',
-        'test/loss_viewpoint - psnr',
+        'train/loss_viewpoint - l1_loss',
+        'train/loss_viewpoint - psnr',
         'total_points'
     ]
     
