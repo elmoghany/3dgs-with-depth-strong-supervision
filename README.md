@@ -211,8 +211,7 @@ python train.py \
   --depth_grad_weight 0.1
 
 #with tensorboard
-python train.py \                              
-    -s datasets/tandt/train/ \
+python train.py -s datasets/tandt/train/ \
     --depth_dir datasets/tandt/train/strong_gt_depth \
     --depth_weight 2.5 \
     --depth_loss huber \
