@@ -21,7 +21,7 @@ This guide walks you from a fresh Linux box to performance metrics:
 | Total Loss         | 0.088  | 0.0631|  ✅ 28% better       |
 
 
-!['img do not exist'](assets/training_comparison.png)
+!['img do not exist'](./assets/training_comparison.png)
 
 ### Equations
 Improved version loss:
